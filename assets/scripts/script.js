@@ -89,10 +89,19 @@ var upperCasedCharacters = [
 ];
 
 let passwordLength;
+let isLowerCaseIncluded;
+let isUpperCaseIncluded;
+let isNumericIncluded;
+let isSpecialCharIncluded;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+
+  // Function to get the length of password is called and the value is stored in the variable.
   passwordLength = getPasswordLength();
+
+  // Function to store all the possible character options required in the password is called.
+  getCharacterOptions();
 }
 
 // Function to get password length
@@ -124,6 +133,26 @@ function getPasswordLength() {
     // The required password length is returned.
     return lengthNum;
 
+  }
+}
+
+// Function to prompt user to enter atleast one character option.
+function getCharacterOptions() {
+
+  // The value of character options is stored in the respective variables.
+  isLowerCaseIncluded = confirm("Do you want to include Lowercase characters?");
+  isUpperCaseIncluded = confirm("Do you want to include Uppercase characters?");
+  isNumericIncluded = confirm("Do you want to include Numeric characters?");
+  isSpecialCharIncluded = confirm("Do you want to include some special characters?");
+
+  // This condition checks to see if atleast one character option is chosen by the user.
+  if(isLowerCaseIncluded || isUpperCaseIncluded || isNumericIncluded || isSpecialCharIncluded) {
+    return;
+  } else {
+
+    // Since none of the character options are chosen an alert message is displayed and the function is called again to get atleast one character option.
+    alert("Please enter atleast one character option!");
+    getCharacterOptions();
   }
 }
 
