@@ -98,20 +98,30 @@ function getPasswordOptions() {
 // Function to get password length
 function getPasswordLength() {
   passwordLength = prompt("Please Enter a password length between 10 and 64");
+
+  // The password length entered by the user is converted to a Number type and stored in a different variable.
   let lengthNum = Number(passwordLength);
   
+  // This condition checks if the number entered by the user is a valid number or not
   if(isNaN(lengthNum)) {
 
     alert("It is not a valid number!");
+
+    // The recursive function call is made to get the correct password length.
     return getPasswordLength();
 
   } else if(lengthNum < 10 || lengthNum > 64) {
+    // This condition is used to check if the required password length entered by the user is within the range.
 
+    // This alert is displayed to tell the user that the entered password length is out of range.
     alert("Password length is not within the range!");
+
+    // The recursive function call is made to get the correct password length.
     return getPasswordLength();
 
   } else {
 
+    // The required password length is returned.
     return lengthNum;
 
   }
