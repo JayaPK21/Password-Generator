@@ -190,10 +190,17 @@ function arrayBuilderWithOptions(arrOptions) {
 // Function for getting a random element from an array
 function getRandom(arr) {
 
+  // Gets a random number for the index in the password array.
+  let selectedIndex = Math.floor(Math.random() * arr.length);
+  
+  // Returns a random character from the array for password generation.
+  return arr[selectedIndex];
 }
 
 // Function to generate password with user input
 function generatePassword() {
+  let generatedPwd = "";
+  let randomChar;
   let arrayWithOptions = [];
 
   // Function called to get all the password options required from the user.
@@ -209,6 +216,18 @@ function generatePassword() {
   arrayWithOptions = arrayBuilderWithOptions(arrayWithOptions);
   console.log(arrayWithOptions);
 
+  // We can get one character for the password each time it loops through. It stops when the password length is reached.
+  for(let i=0; i<passwordLength; i++) {
+
+    // Chooses a random character from the character options array.
+    randomChar = getRandom(arrayWithOptions);
+  
+    // Adds the character to the password string.
+    generatedPwd = generatedPwd + randomChar;
+  }
+
+  // Returns the generated password string to be displayed.
+  return generatedPwd;
 }
 
 // Get references to the #generate element
