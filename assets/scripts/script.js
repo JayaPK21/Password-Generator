@@ -88,9 +88,33 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+let passwordLength;
+
 // Function to prompt user for password options
 function getPasswordOptions() {
+  passwordLength = getPasswordLength();
+}
 
+// Function to get password length
+function getPasswordLength() {
+  passwordLength = prompt("Please Enter a password length between 10 and 64");
+  let lengthNum = Number(passwordLength);
+  
+  if(isNaN(lengthNum)) {
+
+    alert("It is not a valid number!");
+    return getPasswordLength();
+
+  } else if(lengthNum < 10 || lengthNum > 64) {
+
+    alert("Password length is not within the range!");
+    return getPasswordLength();
+
+  } else {
+
+    return lengthNum;
+
+  }
 }
 
 // Function for getting a random element from an array
@@ -100,7 +124,7 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
-
+  getPasswordOptions();
 }
 
 // Get references to the #generate element
