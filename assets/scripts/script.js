@@ -156,6 +156,37 @@ function getCharacterOptions() {
   }
 }
 
+// Function to build an array with all the possible characters to be included in the password.
+function arrayBuilderWithOptions(arrOptions) {
+
+  if(isLowerCaseIncluded) {
+
+    // All the lower case characters are added to the array
+    arrOptions = arrOptions.concat(lowerCasedCharacters);
+  }
+
+  if(isUpperCaseIncluded) {
+
+    // All the upper case characters are added to the array
+    arrOptions = arrOptions.concat(upperCasedCharacters);
+  }
+
+  if(isNumericIncluded) {
+
+    // All the numeric characters are added to the array
+    arrOptions = arrOptions.concat(numericCharacters);
+  }
+
+  if(isSpecialCharIncluded) {
+
+    // All the special characters are added to the array
+    arrOptions = arrOptions.concat(specialCharacters);
+  }
+
+  // Returns an array of all the possible characters required for password generation.
+  return arrOptions;
+}
+
 // Function for getting a random element from an array
 function getRandom(arr) {
 
@@ -163,7 +194,21 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
+  let arrayWithOptions = [];
+
+  // Function called to get all the password options required from the user.
   getPasswordOptions();
+
+  console.log("PasswordLength: " + passwordLength);
+  console.log("LC: " + isLowerCaseIncluded);
+  console.log("UC: "+isUpperCaseIncluded);
+  console.log("NC: "+isNumericIncluded);
+  console.log("SC: "+isSpecialCharIncluded);
+
+  // This variable contains the list of possible characters to be used for password generation.
+  arrayWithOptions = arrayBuilderWithOptions(arrayWithOptions);
+  console.log(arrayWithOptions);
+
 }
 
 // Get references to the #generate element
